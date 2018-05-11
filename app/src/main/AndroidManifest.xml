@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.jun.bisaixiangmu">
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:allowBackup="true"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.BaseActivity" />
+        <activity android:name=".activity.SplashActivity" />
+        <activity android:name=".activity.WelcomeActivity" />
+        <activity android:name=".activity.HongDengActivity" />
+        <activity android:name=".activity.ChuXingActivity" />
+        <activity android:name=".activity.YuZhi7Activity" />
+        <activity android:name=".activity.TestChar" />
+        <activity android:name=".activity.ChongZhi1Activity" />
+        <activity android:name=".activity.ZhangDan3Activity" />
+        <activity android:name=".activity.WeiZhang4Activity" />
+        <activity android:name=".activity.ZXingTestActivity" />
+        <activity android:name=".activity.ErWeiMa37Activity" />
+        <activity android:name=".activity.HuanJing5Activity" />
+        <activity android:name=".activity.XianShi6Activity" />
+
+        <service
+            android:name=".MyApp7Service"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".activity.ETC9Activity" />
+        <activity android:name=".activity.TiKu11Activity" />
+        <activity android:name=".activity.TiKu14Activity" />
+        <activity android:name=".activity.TiKu17Activity" />
+        <activity android:name=".activity.TiKu16Activity" />
+        <activity android:name=".activity.TiKu20Activity" />
+        <activity android:name=".activity.TiKu21Activity" />
+        <activity android:name=".activity.TiKu22Activity" />
+        <activity android:name=".activity.TiKu23Activity" />
+        <activity android:name=".activity.TiKu24Activity" />
+        <activity android:name=".activity.TiKu25Activity" />
+        <activity android:name=".activity.TiKu27Activity" />
+        <activity android:name=".activity.TiKu31Activity" />
+        <activity android:name=".activity.YiJian31Activity" />
+        <activity android:name=".activity.TiKu33Activity" />
+        <activity android:name=".activity.ImageTouchTestActivity" />
+        <activity android:name=".activity.TiKu35Activity" />
+        <activity android:name=".activity.TiKu35_infoActivity" />
+        <activity android:name=".activity.TiKu36ctivity" />
+        <activity android:name=".activity.TiKu32Activity" />
+        <activity android:name=".activity.TiKu32ItemActivity" />
+        <activity android:name=".activity.TiKu38Activity" />
+        <activity android:name=".activity.TiKu38_2Activity" />
+        <activity android:name=".activity.TiKu38_3Activity" />
+        <activity android:name=".activity.TiKu38_4Activity" />
+        <activity android:name=".activity.TiKu38_5Activity"></activity>
+    </application>
+
+</manifest>

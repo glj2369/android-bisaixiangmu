@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">BiSaixiangmu</string>
+
+    <string name="time">%02d</string>
+    <string name="notifi">%s报警，阈值%d，当前值%d</string>
+    <string name="pager2">过去一分钟内最高气温%d℃，最低气温%d℃</string>
+    <string name="pager1">过去一分钟内空气质量差值%d</string>
+    <string name="pager3">过去一分钟内最大相对湿度%d℃</string>
+    <string name="pager4">过去一分钟内最大co2相对浓度%d</string>
+    <string name="gaoJing_yuzhi">我的1-4号车账户余额告警阈值为%s元</string>
+    <string name="fragment_2_item1">%s\n%s</string>
+    <string name="fragment_2_item2">充值人：%s\n车牌号:%s</string>
+    <string name="fragment_2_item3">充值: %d\n余额: %d</string>
+    <string name="fragment_2_item4">充值时间：\n%s</string>
+    <string name="tiku_35_info">景点介绍：\n绝大多数 绝大多数 绝大多数 绝大多数 绝大多数
+        绝大多数 绝大多数 绝大多数 绝大多数 绝大多数 绝大多数 绝大多数 绝大多数 绝大多数
+        绝大多数 绝大多数 绝大多数 绝大多数 绝大多数 绝大多数 绝大多数 绝大多数 绝大多数
+        绝大多数 绝大多数 绝大多数 绝大多数 绝大多数 绝大多数 绝大多数 绝大多数 绝大多数
+        绝大多数 绝大多数 绝大多数 绝大多数 绝大多数 绝大多数 绝大多数 绝大多数 绝大多数
+        绝大多数 绝大多数。</string>
+    <string name="tiku_38_time">%d-%02d-%02d</string>
+    <string name="tiku_36_wendu">%d/%d℃</string>
+    <string name="tiku_36_time">%d日（%s）</string>
+    <string name="tiku_36_tianqi">%s</string>
+    <string name="tiku_36_adress">%s\n%d℃</string>
+    <string name="tiku_36_item1">光谷金融街——南湖商厦\n票价：￥8.0 里程：20.0km</string>
+    <string name="tiku_38_titile">光谷金融街——南湖商厦</string>
+</resources>

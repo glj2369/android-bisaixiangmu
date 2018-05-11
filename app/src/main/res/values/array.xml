@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="deng">
+        <item>路口升序</item>
+        <item>路口降序</item>
+        <item>红灯升序</item>
+        <item>红灯降序</item>
+        <item>绿灯升序</item>
+        <item>绿灯降序</item>
+        <item>黄灯升序</item>
+        <item>黄灯降序</item>
+    </string-array>
+    <string-array name="carid">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="zhangdan">
+        <item>时间升序</item>
+        <item>时间降序</item>
+
+    </string-array>
+    <string-array name="titles">
+        <item>温度</item>
+        <item>湿度</item>
+        <item>光照</item>
+        <item>CO2</item>
+        <item>PM25</item>
+        <item>道路状态</item>
+    </string-array>
+    <string-array name="address">
+        <item>1号路口</item>
+        <item>2号路口</item>
+        <item>3号路口</item>
+        <item>4号路口</item>
+        <item>5号路口</item>
+        <item>6号路口</item>
+    </string-array>
+</resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.TiKu38_2Activity">
+
+    <include layout="@layout/title_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <com.example.jun.bisaixiangmu.imageTest.ScImageView
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:src="@drawable/tiku_38_map"
+            android:layout_height="match_parent"
+            />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="@string/tiku_38_titile"
+                android:layout_width="match_parent"
+                android:textSize="30sp"
+                android:textColor="#000"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="80dp"
+                android:text="票价：￥8.0"
+                android:textSize="30sp"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="50dp"
+                android:text="里程：20.0km"
+                android:textSize="30sp"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/tiku_38_2_bt_next"
+                android:text="下一步"
+                android:textColor="#fff"
+                android:textSize="25sp"
+                android:layout_marginTop="80dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/tiku_38_bt_select"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

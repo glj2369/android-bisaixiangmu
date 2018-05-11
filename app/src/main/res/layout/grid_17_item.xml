@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="150dp">
+    <RelativeLayout
+        android:id="@+id/ralyout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#DAEDFF"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/image_ziwaixian1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="30dp"
+            android:src="@mipmap/ziwaixian" />
+
+        <TextView
+            android:id="@+id/image_miaoshu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image_ziwaixian1"
+            android:layout_marginTop="5dp"
+            android:text="紫外线指数"
+            android:textColor="#5D89B1"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/dengji1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/image_ziwaixian1"
+            android:text="中等(1000)"
+            android:layout_marginLeft="100dp"
+            android:layout_toRightOf="@id/image_ziwaixian1"
+            android:textColor="#61A3D4"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/dengji_message1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/dengji1"
+            android:layout_alignStart="@id/dengji1"
+            android:layout_below="@id/dengji1"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text="涂擦SPF大于15、PA+防晒护肤品。"
+            android:textColor="#9396A3"
+            android:textSize="14sp" />
+    </RelativeLayout>
+</LinearLayout>

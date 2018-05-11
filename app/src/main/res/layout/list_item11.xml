@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tiku_11_item_1"
+            android:gravity="center"
+            android:text="路口"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tiku_11_item_2"
+            android:gravity="center"
+            android:text="红灯时长(S)"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tiku_11_item_3"
+            android:gravity="center"
+            android:text="绿灯时长(S)"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tiku_11_item_4"
+            android:gravity="center"
+            android:text="黄灯时长(S)"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+       <LinearLayout
+           android:layout_weight="0.6"
+           android:layout_width="0dp"
+           android:gravity="center"
+           android:layout_height="wrap_content">
+           <CheckBox
+               android:id="@+id/tiku_11_item_5"
+               android:textSize="16sp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+       </LinearLayout>
+       <LinearLayout
+           android:layout_weight="1.4"
+           android:layout_width="0dp"
+           android:gravity="center"
+           android:layout_height="wrap_content">
+           <Button
+               android:id="@+id/tiku_11_item_6"
+               android:text="设置"
+               android:textSize="16sp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+       </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

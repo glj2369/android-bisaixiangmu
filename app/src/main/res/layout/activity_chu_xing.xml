@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ChuXingActivity">
+    <include layout="@layout/title_layout"/>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+       <TextView
+           android:id="@+id/tv_data"
+           android:text="2018年4月24日"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_number"
+            android:layout_marginLeft="50dp"
+            android:text="单号出行车辆1、3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <TextView
+        android:background="#000"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="出行车辆设置:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+       <LinearLayout
+           android:layout_marginTop="10dp"
+           android:orientation="horizontal"
+           android:layout_width="wrap_content"
+           android:gravity="center_vertical"
+           android:layout_height="wrap_content">
+           <TextView
+               android:text="小车编号：1号"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+           <Switch
+               android:id="@+id/switch_1"
+               android:layout_marginLeft="10dp"
+               android:checked="true"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+       </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="小车编号：2号"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Switch
+                android:id="@+id/switch_2"
+                android:layout_marginLeft="10dp"
+                android:checked="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="小车编号：3号"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Switch
+                android:id="@+id/switch_3"
+                android:layout_marginLeft="10dp"
+                android:checked="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/my_anim_chuxing"
+        android:id="@+id/iv_show_deng"
+        android:layout_width="100dp"
+        android:layout_height="200dp" />
+</LinearLayout>

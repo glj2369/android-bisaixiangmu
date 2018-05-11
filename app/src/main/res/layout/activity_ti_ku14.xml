@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.TiKu14Activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:orientation="vertical">
+
+        <include layout="@layout/title_layout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#FAFAFA"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tiku_14_wendu"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="19°"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="130sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tiku_14_today"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="今天：12-24℃"
+                        android:textColor="@android:color/holo_blue_dark"
+                        android:textSize="25sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp">
+
+                <ImageView
+                    android:id="@+id/tiku_14_gengxin"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="30dp"
+                    android:src="@mipmap/geng_xin" />
+            </RelativeLayout>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/tiku_14_line_chart"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"></com.github.mikephil.charting.charts.LineChart>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="今日生活指数"
+            android:textColor="#509AD0"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F1F1F1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="#DAEDFF"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/image_ziwaixian1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@mipmap/ziwaixian" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/image_ziwaixian1"
+                    android:layout_marginTop="5dp"
+                    android:text="紫外线指数"
+                    android:textColor="#5D89B1"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/dengji1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@id/image_ziwaixian1"
+
+                    android:layout_marginRight="20dp"
+                    android:text="中等(1000)"
+                    android:textColor="#61A3D4"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/dengji_message1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/dengji1"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignStart="@id/dengji1"
+                    android:layout_below="@id/dengji1"
+                    android:layout_marginTop="10dp"
+                    android:text="涂擦SPF大于15、PA+防晒护肤品。"
+                    android:textColor="#9396A3"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="#DAEDFF"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/image_ziwaixian2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@mipmap/ganmao" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/image_ziwaixian2"
+                    android:layout_marginTop="5dp"
+                    android:text="感冒指数"
+                    android:textColor="#5D89B1"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/dengji2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@id/image_ziwaixian2"
+
+                    android:layout_marginRight="20dp"
+                    android:text="轻易发(5)"
+                    android:textColor="#61A3D4"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/dengji_message2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/dengji2"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignStart="@id/dengji2"
+                    android:layout_below="@id/dengji2"
+                    android:layout_marginTop="10dp"
+                    android:text="温度低，风较大，较易发生感冒，注意防护"
+                    android:textColor="#9396A3"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="#DAEDFF"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/image_ziwaixian3"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@mipmap/chuanyi" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/image_ziwaixian3"
+                    android:layout_marginTop="5dp"
+                    android:text="穿衣指数"
+                    android:textColor="#5D89B1"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/dengji3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@id/image_ziwaixian3"
+
+                    android:layout_marginRight="20dp"
+                    android:text="舒适(21)"
+                    android:textColor="#61A3D4"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/dengji_message3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/dengji3"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignStart="@id/dengji3"
+                    android:layout_below="@id/dengji3"
+                    android:layout_marginTop="10dp"
+                    android:text="建议穿短袖衬衫、单裤等服装"
+                    android:textColor="#9396A3"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="#DAEDFF"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/image_ziwaixian4"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@mipmap/yundong" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/image_ziwaixian4"
+                    android:layout_marginTop="5dp"
+                    android:text="运动指数"
+                    android:textColor="#5D89B1"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/dengji4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@id/image_ziwaixian4"
+
+                    android:layout_marginRight="20dp"
+                    android:text="较适宜(800)"
+                    android:textColor="#61A3D4"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/dengji_message4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/dengji4"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignStart="@id/dengji4"
+                    android:layout_below="@id/dengji4"
+                    android:layout_marginTop="10dp"
+                    android:text="易感人群应适当减少室外活动"
+                    android:textColor="#9396A3"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="#DAEDFF"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/image_ziwaixian5"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@mipmap/wurandu" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/image_ziwaixian5"
+                    android:layout_marginTop="5dp"
+                    android:text="空气污染扩散"
+                    android:textColor="#5D89B1"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/dengji5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@id/image_ziwaixian5"
+
+                    android:layout_marginRight="40dp"
+                    android:text="良(10)"
+                    android:textColor="#61A3D4"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/dengji_message5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/dengji5"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignStart="@id/dengji5"
+                    android:layout_below="@id/dengji5"
+                    android:layout_marginTop="10dp"
+                    android:text="易感人群应适当减少室外活动"
+                    android:textColor="#9396A3"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="整点天气实况"
+            android:textColor="#509AD0"
+            android:textSize="25sp" />
+        <android.support.v4.view.ViewPager
+            android:id="@+id/tiku_14_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="500dp">
+        </android.support.v4.view.ViewPager>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/image_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="空气质量" />
+            <TextView
+                android:id="@+id/image_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="温度" />
+
+            <TextView
+                android:id="@+id/image_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="相对湿度" />
+            <TextView
+                android:id="@+id/image_4"
+                android:text="二氧化碳"
+                android:layout_width="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.TiKu38_3Activity">
+    <include layout="@layout/title_layout"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <CalendarView
+                android:id="@+id/tiku_38_3_calendar"
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+            </CalendarView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <TextView
+                android:textColor="#000"
+                android:textSize="30sp"
+                android:text="乘车日期："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <GridView
+                android:numColumns="2"
+                android:layout_margin="10dp"
+                android:verticalSpacing="10dp"
+                android:id="@+id/tiku_38_3_list"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+            </GridView>
+            <Button
+                android:id="@+id/tiku_38_3_bt_next"
+                android:text="下一步"
+                android:textColor="#fff"
+                android:textSize="25sp"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/tiku_38_bt_select"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.TiKu38_5Activity">
+    <include layout="@layout/title_layout"/>
+    <TextView
+        android:textColor="#000"
+        android:textSize="25sp"
+        android:padding="20dp"
+        android:gravity="center_horizontal"
+        android:text="乘车路线：光谷金融街——南湖商厦"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:background="@android:color/darker_gray"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <LinearLayout
+        android:layout_margin="30dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textColor="#000"
+                android:textSize="25sp"
+                android:text="乘客姓名："
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tiku_38_name"
+                android:text="XXX"
+                android:textColor="#000"
+                android:textSize="25sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textColor="#000"
+                android:textSize="25sp"
+                android:text="手机号码："
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tiku_38_phone"
+                android:text="XXXXXXXXXXX"
+                android:textColor="#000"
+                android:textSize="25sp"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="400dp"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textColor="#000"
+                android:textSize="25sp"
+                android:text="上车地点："
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="#000"
+                android:textSize="25sp"
+                android:text="XXX"
+                android:id="@+id/tiku_38_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="400dp"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textColor="#000"
+                android:textSize="25sp"
+                android:text="乘车日期："
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="#000"
+                android:textSize="25sp"
+                android:text="2018-04-03,2018-04-16"
+                android:id="@+id/tiku_38_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </TextView>
+        </LinearLayout>
+        <Button
+            android:id="@+id/tiku_38_4_bt_tijiao"
+            android:text="提交订单"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/tiku_38_bt_select"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"/>
+    </LinearLayout>
+</LinearLayout>
