@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+    <include
+        android:id="@+id/titlelayout"
+        layout="@layout/title_layout" />
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="230dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true" >
+
+        <EditText
+            android:id="@+id/ip_et_ip0"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:maxLength="3"
+            android:inputType="number"
+            android:ems="10"
+            android:gravity="center" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/ip_et_ip1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:maxLength="3"
+            android:singleLine="true"
+            android:inputType="number"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center" />
+
+        <EditText
+            android:id="@+id/ip_et_ip2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:singleLine="true"
+            android:maxLength="3"
+            android:inputType="number"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center" />
+
+        <EditText
+            android:id="@+id/ip_et_ip3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:singleLine="true"
+            android:layout_weight="1"
+            android:maxLength="3"
+            android:inputType="number"
+            android:ems="10"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/ip_btn_sure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/layout1"
+        android:layout_alignRight="@+id/layout1"
+        android:layout_below="@id/layout1"
+        android:layout_centerVertical="true"
+        android:text="IP设置" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/ip_btn_sure"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/ip_test"
+            android:text="测试网络好不好使"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_margin="20dp"
+            android:layout_height="300dp">
+            <TextView
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:id="@+id/test_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </ScrollView>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

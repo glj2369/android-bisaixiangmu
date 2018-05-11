@@ -333,6 +333,7 @@ public class ChongZhi1Activity extends BaseActivity implements View.OnClickListe
             case R.id.bt_chaxun:
                 getYuE2();
                // getYuE2okhttp();
+
                 break;
             case R.id.bt_chongzhi:
                 String jine = mEtJinE.getText().toString().trim();

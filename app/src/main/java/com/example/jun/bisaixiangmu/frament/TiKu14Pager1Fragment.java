@@ -89,7 +89,6 @@ public class TiKu14Pager1Fragment extends Fragment {
         barChart.setDescription("");
         barChart.setDrawBorders(false);//在折线图上添加边框
         barChart.setDrawGridBackground(false); //表格颜色
-        barChart.setDescription("");
         barChart.setDrawBorders(false);
         barChart.getAxisRight().setEnabled(false);
         barChart.setData(data);

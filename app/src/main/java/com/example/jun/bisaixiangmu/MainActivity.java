@@ -34,6 +34,7 @@ import com.example.jun.bisaixiangmu.activity.ErWeiMa37Activity;
 import com.example.jun.bisaixiangmu.activity.HongDengActivity;
 import com.example.jun.bisaixiangmu.activity.HuanJing5Activity;
 import com.example.jun.bisaixiangmu.activity.ImageTouchTestActivity;
+import com.example.jun.bisaixiangmu.activity.IpSetActivity;
 import com.example.jun.bisaixiangmu.activity.TestChar;
 import com.example.jun.bisaixiangmu.activity.TiKu11Activity;
 import com.example.jun.bisaixiangmu.activity.TiKu14Activity;
@@ -52,6 +53,7 @@ import com.example.jun.bisaixiangmu.activity.TiKu33Activity;
 import com.example.jun.bisaixiangmu.activity.TiKu35Activity;
 import com.example.jun.bisaixiangmu.activity.TiKu36ctivity;
 import com.example.jun.bisaixiangmu.activity.TiKu38Activity;
+import com.example.jun.bisaixiangmu.activity.TiKu39Activity;
 import com.example.jun.bisaixiangmu.activity.WeiZhang4Activity;
 import com.example.jun.bisaixiangmu.activity.XianShi6Activity;
 import com.example.jun.bisaixiangmu.activity.YuZhi7Activity;
@@ -219,6 +221,7 @@ public class MainActivity extends BaseMainActivity {
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, IpSetActivity.class));
                 Toast.makeText(MainActivity.this, "我点击了设置按钮", Toast.LENGTH_SHORT).show();
             }
         });
@@ -251,6 +254,7 @@ public class MainActivity extends BaseMainActivity {
         list.add(new MenuList(R.mipmap.ic_launcher_round, "天气信息36题"));
         list.add(new MenuList(R.mipmap.ic_launcher_round, "地铁查询32题"));
         list.add(new MenuList(R.mipmap.ic_launcher_round, "定制班车38题"));
+        list.add(new MenuList(R.mipmap.ic_launcher_round, "新闻媒体39题"));
         list.add(new MenuList(R.mipmap.ic_launcher_round, "imageTest"));
         ListAdapterMenu adapter = new ListAdapterMenu(this, list);
         listView.setAdapter(adapter);
@@ -342,7 +346,10 @@ public class MainActivity extends BaseMainActivity {
                     case 27://38题
                         startActivity(new Intent(MainActivity.this, TiKu38Activity.class));
                         break;
-                    case 28://imageTest
+                    case 28://新闻媒体39题
+                        startActivity(new Intent(MainActivity.this, TiKu39Activity.class));
+                        break;
+                    case 29://imageTest
                         startActivity(new Intent(MainActivity.this, ImageTouchTestActivity.class));
                         break;
                     default:
@@ -388,7 +395,7 @@ public class MainActivity extends BaseMainActivity {
                     String urlString = "http://192.168.1.106:8080/transportservice/type/jason/action/GetCarAccountBalance.do";
                     URL mUrl = new URL(urlString);
                     HttpURLConnection mConnection = (HttpURLConnection) mUrl.openConnection();
-                   // mConnection.setRequestProperty("accept", "*/*");
+                    // mConnection.setRequestProperty("accept", "*/*");
                     mConnection.setRequestProperty("connection", "Keep-Alive");
                     mConnection.setRequestProperty("Content-Type", "text/html; charset=UTF-8");
                     mConnection.setRequestMethod("POST");

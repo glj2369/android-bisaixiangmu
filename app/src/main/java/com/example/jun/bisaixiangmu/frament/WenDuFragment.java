@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class WenDuFragment extends Fragment {
+public class        WenDuFragment extends Fragment {
     private Context context;
     private LineChart lineChart;
     private HuanJing4DB huanJing4DB;

@@ -68,7 +68,9 @@
         <activity android:name=".activity.TiKu38_2Activity" />
         <activity android:name=".activity.TiKu38_3Activity" />
         <activity android:name=".activity.TiKu38_4Activity" />
-        <activity android:name=".activity.TiKu38_5Activity"></activity>
+        <activity android:name=".activity.IpSetActivity" />
+        <activity android:name=".activity.TiKu38_5Activity" />
+        <activity android:name=".activity.TiKu39Activity"></activity>
     </application>
 
 </manifest>
