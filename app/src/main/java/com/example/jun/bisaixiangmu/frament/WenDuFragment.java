@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class        WenDuFragment extends Fragment {
+public class WenDuFragment extends Fragment {
     private Context context;
     private LineChart lineChart;
     private HuanJing4DB huanJing4DB;
@@ -42,35 +42,37 @@ public class        WenDuFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         SQLiteDatabase db = huanJing4DB.getReadableDatabase();
-        wendus=new ArrayList<>();
+        wendus = new ArrayList<>();
         Cursor cursor = db.query("zhibiao", null, null, null, null, null, null);
-        if (cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             do {
                 int weidu = cursor.getInt(cursor.getColumnIndex("weidu"));
                 wendus.add(weidu);
 
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
             cursor.close();
             db.close();
-        }else {
+        } else {
             cursor.close();
             db.close();
         }
 
         List<Entry> entries = new ArrayList<>();
-        for (int i=0;i<wendus.size();i++) {
+        for (int i = 0; i < wendus.size(); i++) {
             Entry entry = new Entry(wendus.get(i), i);
             entries.add(entry);
         }
 
         LineDataSet dataSet = new LineDataSet(entries, "温度");
+        //设置图例是否显示
+        //lineChart.getLegend().setEnabled(false);
         dataSet.setColor(Color.GRAY);
 
-        List<String> mList=new ArrayList<>();
-        for (int i=0;i<20;i++){
-            int j=i*3;
-            mList.add(Calendar.getInstance().get(Calendar.MINUTE)+":"+getString(R.string.time,j));
-            Log.e("-----------",""+ mList.get(i));
+        List<String> mList = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            int j = i * 3;
+            mList.add(Calendar.getInstance().get(Calendar.MINUTE) + ":" + getString(R.string.time, j));
+            Log.e("-----------", "" + mList.get(i));
         }
 
         LineData data = new LineData(mList, dataSet);//对应横坐标标签和数据集
@@ -90,6 +92,7 @@ public class        WenDuFragment extends Fragment {
         lineChart.setDrawBorders(false);//在折线图上添加边框
         lineChart.setDrawGridBackground(false); //表格颜色
         lineChart.setDescription("");
+
         lineChart.setDrawBorders(false);
         lineChart.getAxisLeft().setStartAtZero(false);
         //lineChart.getAxisLeft().setDrawGridLines(false); //取消横向的水平线
@@ -102,7 +105,6 @@ public class        WenDuFragment extends Fragment {
         View view = LayoutInflater.from(context).inflate(R.layout.wendu_viewpager, null);
         lineChart = view.findViewById(R.id.line_cart_fragment);
         huanJing4DB = new HuanJing4DB(context);
-
         return view;
     }
 }

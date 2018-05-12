@@ -100,7 +100,7 @@ public class ChuXingActivity extends BaseActivity implements View.OnClickListene
     private void datainit() {
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
+        int month = calendar.get(Calendar.MONTH)+1;
         day = calendar.get(Calendar.DAY_OF_MONTH);
         bday = checkDay(day);
         switchCheck(bday);
@@ -167,7 +167,7 @@ public class ChuXingActivity extends BaseActivity implements View.OnClickListene
     }
     private void setText() {
         mTvShowNumber.setText(strNumber);
-        toDay = offyear + "年" + offMonth + "月" + offDay + "日";
+        toDay = offyear + "年" + offMonth+1 + "月" + offDay + "日";
         mTvShowDate.setText(toDay);
     }
 

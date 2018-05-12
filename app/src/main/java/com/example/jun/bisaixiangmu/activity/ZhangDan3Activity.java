@@ -9,6 +9,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
@@ -96,7 +99,6 @@ public class ZhangDan3Activity extends BaseActivity {
         Cursor query = db.query("history", null, null, null, null, null, null);
         if (query.moveToFirst()){
             do {
-
                 int carId = query.getInt(query.getColumnIndex("carId"));
                 int chongNum = query.getInt(query.getColumnIndex("chongNum"));
                 String person = query.getString(query.getColumnIndex("personName"));
@@ -125,6 +127,11 @@ public class ZhangDan3Activity extends BaseActivity {
         }else {
             error.setVisibility(View.GONE);
             TimeAdapter adapter=new TimeAdapter();
+            //小动画测试
+            Animation animation= AnimationUtils.loadAnimation(this,R.anim.a);
+            LayoutAnimationController controller=new LayoutAnimationController(animation);
+            controller.setOrder(LayoutAnimationController.ORDER_NORMAL);
+            listView.setLayoutAnimation(controller);
             listView.setAdapter(adapter);
         }
     }
@@ -160,6 +167,7 @@ public class ZhangDan3Activity extends BaseActivity {
             jine.setText(bean3.getJine()+"");
             person.setText(bean3.getPerson()+"");
             time.setText(bean3.getTime()+"");
+
             return convertView;
         }
     }

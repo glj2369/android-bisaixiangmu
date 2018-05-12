@@ -135,6 +135,7 @@ public class YuZhi7Activity extends BaseActivity implements View.OnClickListener
                     edit.putString("pm25", pm25);
                     edit.putString("zhuangtai", zhuangtai);
                     edit.apply();
+
                     mSwitchYuzhi.setChecked(true);
                     }
                 Toast.makeText(this, "保存成功", Toast.LENGTH_SHORT).show();

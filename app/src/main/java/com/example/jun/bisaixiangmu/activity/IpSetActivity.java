@@ -123,7 +123,7 @@ public class IpSetActivity extends BaseActivity implements View.OnClickListener 
                 break;
             case R.id.ip_test:
 
-                String ip = mSetIPPreferences.getString("ip", "192.168.1.131");
+                String ip = mSetIPPreferences.getString("ip", "192.168.1.106");
                 final String address = TEST_HTTP + ip + TEST_ADDRESS;
                 progressDialog.show();
                 new Thread(new Runnable() {

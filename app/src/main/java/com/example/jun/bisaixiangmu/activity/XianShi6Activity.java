@@ -18,7 +18,6 @@ import com.example.jun.bisaixiangmu.frament.ShiduFragment;
 import com.example.jun.bisaixiangmu.frament.WenDuFragment;
 import com.example.jun.bisaixiangmu.frament.ZhuangTaiFragment;
 import com.example.jun.bisaixiangmu.utils.MyFragmentPagerAdapter;
-import com.example.jun.bisaixiangmu.utils.MyPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

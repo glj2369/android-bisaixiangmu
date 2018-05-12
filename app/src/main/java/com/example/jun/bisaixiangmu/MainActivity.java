@@ -12,11 +12,17 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.IBinder;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CalendarView;
@@ -101,7 +107,7 @@ public class MainActivity extends BaseMainActivity {
     private ViewPager mViewPager;
     private List<View> mViews;
     private LayoutInflater mInflater;
-    private MyPagerAdapter myPagerAdapter;
+    private MyPagerAdapter adapter;
     private List<ImageView> mDots;//定义一个集合存储三个dot
     private int oldPosition;//记录当前点的位置。
     private Intent intent;
@@ -109,6 +115,8 @@ public class MainActivity extends BaseMainActivity {
     private MyApp7Service.MyBinder binder;
     private CalendarView calendarView;
     private Timer timer;
+    private NavigationView navView;
+    private NetUtil1 netUtil1 = new NetUtil1();
 
     @Override
     protected String getLayoutTitle() {
@@ -144,7 +152,7 @@ public class MainActivity extends BaseMainActivity {
         //mDots.get(oldPosition).setImageResource(R.drawable.dot_focused);
         //这里我们用颜色来代替 BLACK  RED
         mDots.get(oldPosition).setBackgroundColor(Color.RED);
-        MyPagerAdapter adapter = new MyPagerAdapter(mViews);
+        adapter = new MyPagerAdapter(mViews);
         mViewPager.setAdapter(adapter);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -163,8 +171,8 @@ public class MainActivity extends BaseMainActivity {
             }
         });
     }
-
-    public void timedia(final String strTime) {
+    //这是弹出选中的时间，小模拟
+    public void timedialog(final String strTime) {
         new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -174,50 +182,61 @@ public class MainActivity extends BaseMainActivity {
         }, 0, 0, true).show();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.tool_bar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                break;
+            default:
+                startActivitMenu(item);
+                break;
+        }
+        return true;
+    }
+
     @SuppressLint("WrongViewCast")
     @Override
     protected void initView() {
-        timer = new Timer();
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                //postJson();
-                //postHttp();
-            }
-        }).start();
-
-        calendarView = findViewById(R.id.calendar_view);
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                String strTime = "你选择的时间：" + year + "年" + month + "月" + dayOfMonth + "日";
-                Log.e("calendarView", "" + strTime);
-                //timedia(strTime);
-
-            }
-        });
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         mDrawerLayout = findViewById(R.id.drawer_layout);
-        mTvMenu = findViewById(R.id.menu);
-        listView = findViewById(R.id.menu_list);
-        layout = findViewById(R.id.layout_shezhi);
+        navView = findViewById(R.id.nav_view);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_format_list_bulleted_black_24dp);
+        }
+        initMenu();
+
+        timer=new Timer();
+
         receiver = new DialogDome(this);
         registerReceiver(receiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
-        menuinit();
+
         intent = new Intent(MainActivity.this, MyApp7Service.class);
         conn = new MyConn();
         startService(intent);
         bindService(intent, conn, BIND_AUTO_CREATE);
-    }
-
-
-    private void menuinit() {
-        mTvMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDrawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
+//        calendarView = findViewById(R.id.calendar_view);
+//        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+//            @Override
+//            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+//                String strTime = "你选择的时间：" + year + "年" + month + "月" + dayOfMonth + "日";
+//                Log.e("calendarView", "" + strTime);
+//                //timedialog(strTime);
+//
+//            }
+//        });
+        // mTvMenu = findViewById(R.id.menu);
+//        listView = findViewById(R.id.menu_list);
+        layout = findViewById(R.id.layout_shezhi);
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -225,6 +244,127 @@ public class MainActivity extends BaseMainActivity {
                 Toast.makeText(MainActivity.this, "我点击了设置按钮", Toast.LENGTH_SHORT).show();
             }
         });
+        //menuinit();
+
+    }
+
+    private void initMenu() {
+        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                startActivitMenu(item);
+                return true;
+            }
+        });
+    }
+
+    private void startActivitMenu(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.tiku_1:
+                startActivity(new Intent(MainActivity.this, ChongZhi1Activity.class));
+                break;
+            case R.id.tiku_2:
+                startActivity(new Intent(MainActivity.this, HongDengActivity.class));
+                break;
+            case R.id.tiku_3:
+                startActivity(new Intent(MainActivity.this, ZhangDan3Activity.class));
+                break;
+            case R.id.tiku_4:
+                startActivity(new Intent(MainActivity.this, WeiZhang4Activity.class));
+                break;
+            case R.id.tiku_5:
+                startActivity(new Intent(MainActivity.this, HuanJing5Activity.class));
+                break;
+            case R.id.tiku_6:
+                startActivity(new Intent(MainActivity.this, XianShi6Activity.class));
+                break;
+            case R.id.tiku_7:
+                startActivity(new Intent(MainActivity.this, YuZhi7Activity.class));
+                break;
+            case R.id.tiku_8:
+                startActivity(new Intent(MainActivity.this, ChuXingActivity.class));
+                break;
+            case R.id.tiku_9:
+                startActivity(new Intent(MainActivity.this, ETC9Activity.class));
+                break;
+            case R.id.tiku_11:
+                startActivity(new Intent(MainActivity.this, TiKu11Activity.class));
+                break;
+            case R.id.tiku_14:
+                startActivity(new Intent(MainActivity.this, TiKu14Activity.class));
+                break;
+            case R.id.tiku_16:
+                startActivity(new Intent(MainActivity.this, TiKu16Activity.class));
+                break;
+            case R.id.tiku_17:
+                startActivity(new Intent(MainActivity.this, TiKu17Activity.class));
+                break;
+            case R.id.tiku_20:
+                startActivity(new Intent(MainActivity.this, TiKu20Activity.class));
+                break;
+            case R.id.tiku_21:
+                startActivity(new Intent(MainActivity.this, TiKu21Activity.class));
+                break;
+            case R.id.tiku_22:
+                startActivity(new Intent(MainActivity.this, TiKu22Activity.class));
+                break;
+            case R.id.tiku_23:
+                startActivity(new Intent(MainActivity.this, TiKu23Activity.class));
+                break;
+            case R.id.tiku_24:
+                startActivity(new Intent(MainActivity.this, TiKu24Activity.class));
+                break;
+            case R.id.tiku_25:
+                startActivity(new Intent(MainActivity.this, TiKu25Activity.class));
+                break;
+            case R.id.tiku_27:
+                startActivity(new Intent(MainActivity.this, TiKu27Activity.class));
+                break;
+            case R.id.tiku_31:
+                startActivity(new Intent(MainActivity.this, TiKu31Activity.class));
+                break;
+            case R.id.tiku_32:
+                startActivity(new Intent(MainActivity.this, TiKu32Activity.class));
+                break;
+            case R.id.tiku_33:
+                startActivity(new Intent(MainActivity.this, TiKu33Activity.class));
+                break;
+            case R.id.tiku_35:
+                startActivity(new Intent(MainActivity.this, TiKu35Activity.class));
+                break;
+            case R.id.tiku_36:
+                startActivity(new Intent(MainActivity.this, TiKu36ctivity.class));
+                break;
+            case R.id.tiku_37:
+                startActivity(new Intent(MainActivity.this, ErWeiMa37Activity.class));
+                break;
+            case R.id.tiku_38:
+                startActivity(new Intent(MainActivity.this, TiKu38Activity.class));
+                break;
+            case R.id.tiku_39:
+                startActivity(new Intent(MainActivity.this, TiKu39Activity.class));
+                break;
+            case R.id.tiku_image_test:
+                startActivity(new Intent(MainActivity.this, ImageTouchTestActivity.class));
+                break;
+            case R.id.tiku_test_chart:
+                startActivity(new Intent(MainActivity.this, TestChar.class));
+                break;
+            default:
+                break;
+        }
+    }
+
+
+    private void menuinit() {
+//        mTvMenu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mDrawerLayout.openDrawer(GravityCompat.START);
+//            }
+//        });
+
+
         list = new ArrayList<>();
         list.add(new MenuList(R.mipmap.ic_launcher_round, "红绿灯管理2题"));
         list.add(new MenuList(R.mipmap.ic_launcher_round, "出行管理8题"));
@@ -383,7 +523,6 @@ public class MainActivity extends BaseMainActivity {
         }
     }
 
-    NetUtil1 netUtil1 = new NetUtil1();
 
     private void postHttp() {
         new Thread(new Runnable() {
@@ -496,7 +635,6 @@ public class MainActivity extends BaseMainActivity {
         if (timer != null) {
             timer.purge();
             timer.cancel();
-            Log.e("timer", "======================");
         }
     }
 
@@ -505,7 +643,7 @@ public class MainActivity extends BaseMainActivity {
         super.onResume();
         Log.e("onResume", "======================");
         if (timer != null) {
-            timer = new Timer();
+            timer=new Timer();
             timer.schedule(new TimerTaskTest3(), 3000, 5000);
         }
     }
@@ -515,6 +653,7 @@ public class MainActivity extends BaseMainActivity {
         public void run() {
             //postHttp();
             //postJson();
+            Log.e("MainActtivity","TimerTaskTest3-----------");
         }
     }
 }

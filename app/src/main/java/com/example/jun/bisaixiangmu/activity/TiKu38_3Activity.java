@@ -72,7 +72,7 @@ public class TiKu38_3Activity extends BaseActivity implements View.OnClickListen
         tiku_38_3_bt_next.setOnClickListener(this);
         tiku_38_3_list=findViewById(R.id.tiku_38_3_list);
         list=new ArrayList<String>();
-        adapter = new ArrayAdapter<String>(this, R.layout.tiku32_item, list);
+        adapter = new ArrayAdapter<String>(this, R.layout.tiku38_item, list);
         adapter.setDropDownViewResource(R.layout.tiku32_item);
         tiku_38_3_list.setAdapter(adapter);
         tiku_38_3_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {

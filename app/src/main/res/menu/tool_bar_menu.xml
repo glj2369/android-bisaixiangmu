@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/tiku_1"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第一题，账户充值"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_2"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第二题，红绿灯管理"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_3"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第三题，账单管理"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_4"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第四题，车辆违章（未实现）"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_5"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第五题，环境指标"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_6"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第六题，实时显示"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_7"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第七题，阈值设置"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_8"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第八题，出行管理"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_9"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第九题，账户管理"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_10"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第十题，（未实现）"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_11"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第十一题，红绿灯管理"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_14"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第十四题，生活助手"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_16"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第十六题，个人中心"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_17"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第十七题，生活助手"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_20"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第二十题，生活助手"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_21"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第二十一题，红绿灯管理"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_22"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第二十二题，账户管理"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_23"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第二十三题，账户设置"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_24"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第二十四题，生活助手"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_25"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第二十五题，路况查询"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_27"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第二十七题，生活助手"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_31"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第三十一题，意见反馈"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_32"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第三十二题，地铁查询"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_33"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第三十三题，高速路况"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_35"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第三十五题，旅游信息"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_36"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第三十六题，天气信息"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_37"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第三十七题，二维码"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_38"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第三十八题，定制班车"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_39"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第三十九题，新闻客户端"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_image_test"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="图表手势测试"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_test_chart"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="图表测试"
+        app:showAsAction="never" />
+</menu>

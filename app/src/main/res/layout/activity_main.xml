@@ -6,25 +6,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".MainActivity">
+        android:orientation="vertical">
 
-        <include layout="@layout/title_main_layout" />
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+
+            <!--<include layout="@layout/title_main_layout" />-->
+        </android.support.design.widget.AppBarLayout>
 
         <CalendarView
             android:id="@+id/calendar_view"
             android:layout_width="match_parent"
-            android:layout_height="300dp">
-
-        </CalendarView>
+            android:layout_height="300dp"></CalendarView>
 
         <FrameLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
             <android.support.v4.view.ViewPager
                 android:id="@+id/viewpager_show"
                 android:layout_width="match_parent"
@@ -62,14 +74,54 @@
             </LinearLayout>
         </FrameLayout>
     </LinearLayout>
-
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="start">
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_gravity="start"
+        android:layout_height="match_parent">
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/tool_bar_menu">
 
-        <include layout="@layout/menu_layout" />
-
+        </android.support.design.widget.NavigationView>
+        <LinearLayout
+            android:id="@+id/layout_shezhi"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:background="#ffff"
+            android:padding="10dp">
+            <ImageView
+                android:src="@mipmap/ic_launcher_round"
+                android:background="@drawable/menu_head"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:text="设置"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
+
+
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:gravity="start"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_gravity="start">-->
+    <!--<include layout="@layout/menu_layout" />-->
+    <!--</LinearLayout>-->
+
 
 </android.support.v4.widget.DrawerLayout>

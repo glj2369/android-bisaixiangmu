@@ -1,6 +1,9 @@
 package com.example.jun.bisaixiangmu.activity;
 
 
+import android.content.Intent;
+import android.provider.Contacts;
+import android.provider.MediaStore;
 import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
 import android.view.View;

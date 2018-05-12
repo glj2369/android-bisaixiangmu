@@ -2,6 +2,7 @@ package com.example.jun.bisaixiangmu.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,12 +21,11 @@ public abstract class BaseMainActivity extends AppCompatActivity {
         setContentView(getLayouId());
         initView();
         initData();
-        setTitleLayout();
+        //setTitleLayout();
 
     }
     private void setTitleLayout() {
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.titlelayout);
-
         mTitleTV = (TextView) layout.findViewById(R.id.title);
         mTitleTV.setText(getLayoutTitle());
 

@@ -233,6 +233,7 @@ public class HongDengActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void sheng(final int i) {
+
         Collections.sort(list, new Comparator<DengBean>() {
             @Override
             public int compare(DengBean o1, DengBean o2) {
