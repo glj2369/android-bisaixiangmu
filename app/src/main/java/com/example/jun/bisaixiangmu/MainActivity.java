@@ -8,6 +8,8 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.IBinder;
@@ -20,6 +22,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,6 +35,7 @@ import android.widget.ListView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.jun.bisaixiangmu.activity.AnimTestActivity;
 import com.example.jun.bisaixiangmu.activity.BaseMainActivity;
 import com.example.jun.bisaixiangmu.activity.ChongZhi1Activity;
 import com.example.jun.bisaixiangmu.activity.ChuXingActivity;
@@ -42,6 +46,7 @@ import com.example.jun.bisaixiangmu.activity.HuanJing5Activity;
 import com.example.jun.bisaixiangmu.activity.ImageTouchTestActivity;
 import com.example.jun.bisaixiangmu.activity.IpSetActivity;
 import com.example.jun.bisaixiangmu.activity.TestChar;
+import com.example.jun.bisaixiangmu.activity.TestExpandableListActivity;
 import com.example.jun.bisaixiangmu.activity.TiKu11Activity;
 import com.example.jun.bisaixiangmu.activity.TiKu14Activity;
 import com.example.jun.bisaixiangmu.activity.TiKu16Activity;
@@ -60,11 +65,13 @@ import com.example.jun.bisaixiangmu.activity.TiKu35Activity;
 import com.example.jun.bisaixiangmu.activity.TiKu36ctivity;
 import com.example.jun.bisaixiangmu.activity.TiKu38Activity;
 import com.example.jun.bisaixiangmu.activity.TiKu39Activity;
+import com.example.jun.bisaixiangmu.activity.TiKu45Activity;
 import com.example.jun.bisaixiangmu.activity.WeiZhang4Activity;
 import com.example.jun.bisaixiangmu.activity.XianShi6Activity;
 import com.example.jun.bisaixiangmu.activity.YuZhi7Activity;
 import com.example.jun.bisaixiangmu.activity.ZhangDan3Activity;
 import com.example.jun.bisaixiangmu.bean.MenuList;
+import com.example.jun.bisaixiangmu.db.YiJian31DB;
 import com.example.jun.bisaixiangmu.http.NetUtil1;
 import com.example.jun.bisaixiangmu.utils.DialogDome;
 import com.example.jun.bisaixiangmu.utils.ListAdapterMenu;
@@ -83,9 +90,13 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.TimeZone;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -171,6 +182,7 @@ public class MainActivity extends BaseMainActivity {
             }
         });
     }
+
     //这是弹出选中的时间，小模拟
     public void timedialog(final String strTime) {
         new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
@@ -215,7 +227,7 @@ public class MainActivity extends BaseMainActivity {
         }
         initMenu();
 
-        timer=new Timer();
+        timer = new Timer();
 
         receiver = new DialogDome(this);
         registerReceiver(receiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
@@ -240,11 +252,13 @@ public class MainActivity extends BaseMainActivity {
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 startActivity(new Intent(MainActivity.this, IpSetActivity.class));
                 Toast.makeText(MainActivity.this, "我点击了设置按钮", Toast.LENGTH_SHORT).show();
             }
         });
         //menuinit();
+
 
     }
 
@@ -349,6 +363,15 @@ public class MainActivity extends BaseMainActivity {
                 break;
             case R.id.tiku_test_chart:
                 startActivity(new Intent(MainActivity.this, TestChar.class));
+                break;
+            case R.id.test_expandablelist:
+                startActivity(new Intent(MainActivity.this, TestExpandableListActivity.class));
+                break;
+            case R.id.test_anim:
+                startActivity(new Intent(MainActivity.this, AnimTestActivity.class));
+                break;
+            case R.id.tiku_45:
+                startActivity(new Intent(MainActivity.this, TiKu45Activity.class));
                 break;
             default:
                 break;
@@ -643,8 +666,33 @@ public class MainActivity extends BaseMainActivity {
         super.onResume();
         Log.e("onResume", "======================");
         if (timer != null) {
-            timer=new Timer();
+            timer = new Timer();
             timer.schedule(new TimerTaskTest3(), 3000, 5000);
+        }
+    }
+
+    //两次退出test
+    //event.getRepeatCount()点后退键的时候，为了防止点得过快，触发两次后退事件，故做此设置
+    private long time;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Log.e("onKeyDownonKeyDown", "" + keyCode);
+        Log.e("onKeyDownonKeyDown", "" + event);
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            exit();
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private void exit() {
+        if (System.currentTimeMillis() - time > 2000) {
+            Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
+            time = System.currentTimeMillis();
+        } else {
+            finish();
+            System.exit(0);
         }
     }
 
@@ -653,7 +701,7 @@ public class MainActivity extends BaseMainActivity {
         public void run() {
             //postHttp();
             //postJson();
-            Log.e("MainActtivity","TimerTaskTest3-----------");
+            Log.e("MainActtivity", "TimerTaskTest3-----------");
         }
     }
 }

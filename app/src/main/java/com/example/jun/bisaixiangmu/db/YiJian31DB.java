@@ -11,16 +11,20 @@ public class YiJian31DB extends SQLiteOpenHelper {
             "phone text," +
             "content text," +
             "time text)";
+    private final static String CREATE_TABLE_2 = "create table testTime(" +
+            "id integer primary key autoincrement," +
+            "time datetime)";
     private Context context;
 
     public YiJian31DB(Context context) {
-        super(context, "YiJian.db", null, 2);
+        super(context, "YiJian.db", null, 3);
         this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE);
+        db.execSQL(CREATE_TABLE_2);
     }
 
     @Override

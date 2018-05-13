@@ -156,4 +156,19 @@
         android:icon="@drawable/ic_title_black_24dp"
         android:title="图表测试"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/test_expandablelist"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="ExpandableList测试"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/test_anim"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="动画测试测试"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tiku_45"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="第四十五题"
+        app:showAsAction="never" />
 </menu>

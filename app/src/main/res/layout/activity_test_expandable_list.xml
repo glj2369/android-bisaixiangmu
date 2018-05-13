@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.TestExpandableListActivity">
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#999999"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/car" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="40dp"
+            android:text="901路公交汽车"
+            android:textColor="#000"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="50dp"
+            android:text="首:6:00 末:21:00"
+            android:textColor="#000"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="160dp"
+            android:text="当前承载能力:"
+            android:textColor="#000"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:text="1211人"
+            android:textColor="#000"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/bt_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:gravity="center"
+            android:text="详情"
+            android:textColor="#000"
+            android:textSize="25sp" />
+
+
+    </LinearLayout>
+    <ExpandableListView
+        android:id="@+id/test_expandablelist1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ExpandableListView>
+</LinearLayout>

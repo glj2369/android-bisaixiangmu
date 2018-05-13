@@ -83,7 +83,6 @@ public class WenDuFragment extends Fragment {
 
 
         lineChart.getAxisRight().setEnabled(false);//取消纵向的水平线
-
         lineChart.setNoDataText("暂无数据显示");
         lineChart.setData(data);//设置显示数据
         lineChart.setTouchEnabled(true); //可点击

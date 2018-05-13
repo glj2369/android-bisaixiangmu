@@ -72,7 +72,10 @@
         <activity android:name=".activity.TiKu38_4Activity" />
         <activity android:name=".activity.IpSetActivity" />
         <activity android:name=".activity.TiKu38_5Activity" />
-        <activity android:name=".activity.TiKu39Activity"></activity>
+        <activity android:name=".activity.TiKu39Activity" />
+        <activity android:name=".activity.TestExpandableListActivity" />
+        <activity android:name=".activity.AnimTestActivity" />
+        <activity android:name=".activity.TiKu45Activity"></activity>
     </application>
 
 </manifest>

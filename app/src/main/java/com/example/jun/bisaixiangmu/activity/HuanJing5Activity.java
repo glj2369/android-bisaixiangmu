@@ -23,7 +23,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.Timer;
@@ -135,6 +138,8 @@ public class HuanJing5Activity extends BaseActivity {
         public void run() {
             Log.e("TimerTaskTest60", "------------------------");
             db = huanJing4DB.getWritableDatabase();
+
+
             Cursor cursor = db.query("zhibiao", null, null, null, null, null, null);
             if (cursor.getCount() >= 20) {
                 int id = 0;
