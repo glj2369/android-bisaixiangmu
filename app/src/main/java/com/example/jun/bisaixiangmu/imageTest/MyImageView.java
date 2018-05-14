@@ -16,148 +16,36 @@ import android.widget.ImageView;
 
 //网上实现图片手势放大MyImageView.class-----不好使
 @SuppressLint("AppCompatCustomView")
-public class MyImageView extends ImageView implements ScaleGestureDetector.OnScaleGestureListener, View.OnTouchListener {
-    /**
-     * 控件宽度
-     */
-    private int mWidth;
-    /**
-     * 控件高度
-     */
-    private int mHeight;
-
-    /**
-     * 拿到src的图片
-     */
-    private Drawable mDrawable;
-
-    /**
-     * 图片宽度（使用前判断mDrawable是否null）
-     */
-    private int mDrawableWidth;
-    /**
-     * 图片高度（使用前判断mDrawable是否null）
-     */
-    private int mDrawableHeight;
-
-    /**
-     * 初始化缩放值
-     */
-    private float mScale;
-
-    /**
-     * 双击图片的缩放值
-     */
-    private float mDoubleClickScale;
-
-    /**
-     * 最大的缩放值
-     */
-    private float mMaxScale;
-    /**
-     * 最小的缩放值
-     */
-    private float mMinScale;
-
-    private ScaleGestureDetector scaleGestureDetector;
-    /**
-     * 当前有着缩放值、平移值的矩阵。
-     */
-    private Matrix matrix;
-
+public class MyImageView extends ImageView implements ScaleGestureDetector.OnScaleGestureListener, View.OnTouchListener, ViewTreeObserver.OnGlobalLayoutListener{
+    private Matrix matrix=new Matrix();
+    private ScaleGestureDetector detector;
+    private boolean once=true;
     public MyImageView(Context context) {
-        this(context, null);
+        this(context,null);
     }
 
-    public MyImageView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
 
-    public MyImageView(Context context, AttributeSet attrs, int defStyleAttr) {
+
+    public MyImageView(Context context, @Nullable AttributeSet attrs) {
+        this(context, attrs,0);
+
+    }
+    public MyImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setOnTouchListener(this);
-        scaleGestureDetector = new ScaleGestureDetector(context, this);
-        initListener();
-    }
-
-
-    /**
-     * 初始化事件监听
-     */
-    private void initListener() {
-        // 强制设置模式
         setScaleType(ScaleType.MATRIX);
-        // 添加观察者
-        getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                // 移除观察者
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                }
-                getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                // 获取控件大小
-                mWidth = getWidth();
-                mHeight = getHeight();
-
-                //通过getDrawable获得Src的图片
-                mDrawable = getDrawable();
-                if (mDrawable == null)
-                    return;
-                mDrawableWidth = mDrawable.getIntrinsicWidth();
-                mDrawableHeight = mDrawable.getIntrinsicHeight();
-                initImageViewSize();
-                moveToCenter();
-            }
-        });
-    }
-
-    /**
-     * 初始化资源图片宽高
-     */
-    private void initImageViewSize() {
-        if (mDrawable == null)
-            return;
-
-        // 缩放值
-        float scale = 1.0f;
-        // 图片宽度大于控件宽度，图片高度小于控件高度
-        if (mDrawableWidth > mWidth && mDrawableHeight < mHeight)
-            scale = mWidth * 1.0f / mDrawableWidth;
-            // 图片高度度大于控件宽高，图片宽度小于控件宽度
-        else if (mDrawableHeight > mHeight && mDrawableWidth < mWidth)
-            scale = mHeight * 1.0f / mDrawableHeight;
-            // 图片宽度大于控件宽度，图片高度大于控件高度
-        else if (mDrawableHeight > mHeight && mDrawableWidth > mWidth)
-            scale = Math.min(mHeight * 1.0f / mDrawableHeight, mWidth * 1.0f / mDrawableWidth);
-            // 图片宽度小于控件宽度，图片高度小于控件高度
-        else if (mDrawableHeight < mHeight && mDrawableWidth < mWidth)
-            scale = Math.min(mHeight * 1.0f / mDrawableHeight, mWidth * 1.0f / mDrawableWidth);
-        mScale = scale;
-        mMaxScale = mScale * 8.0f;
-        mMinScale = mScale * 0.5f;
-    }
-
-    /**
-     * 移动控件中间位置
-     */
-    private void moveToCenter() {
-        final float dx = mWidth / 2 - mDrawableWidth / 2;
-        final float dy = mHeight / 2 - mDrawableHeight / 2;
-        matrix = new Matrix();
-        // 平移至中心
-        matrix.postTranslate(dx, dy);
-        // 以控件中心作为缩放
-        matrix.postScale(mScale, mScale, mWidth / 2, mHeight / 2);
-        setImageMatrix(matrix);
+        detector=new ScaleGestureDetector(context,this);
+        setOnTouchListener(this);
     }
 
     @Override
     public boolean onScale(ScaleGestureDetector detector) {
-
+        float scaleFactor = detector.getScaleFactor();
+        if (getDrawable()==null)
+            return true;
+        matrix.postScale(scaleFactor,scaleFactor,getWidth()/2,getHeight()/2);
+        setImageMatrix(matrix);
         return true;
     }
-
 
     @Override
     public boolean onScaleBegin(ScaleGestureDetector detector) {
@@ -168,11 +56,52 @@ public class MyImageView extends ImageView implements ScaleGestureDetector.OnSca
     public void onScaleEnd(ScaleGestureDetector detector) {
 
     }
+    private float spacing(MotionEvent event) {
+        if (event.getPointerCount() >= 2) {
+            float x = event.getX(0) - event.getX(1);
+            float y = event.getY(0) - event.getY(1);
+            return (float) Math.sqrt(x * x + y * y);
+        } else return 0;
+    }
 
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-
-        return scaleGestureDetector.onTouchEvent(event);
+        return detector.onTouchEvent(event);
     }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        getViewTreeObserver().addOnGlobalLayoutListener(this);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            getViewTreeObserver().removeOnGlobalLayoutListener(this);
+        }
+        getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+
+    @Override
+    public void onGlobalLayout() {
+        if (!once)
+            return;
+        Drawable drawable = getDrawable();
+        if (drawable==null)
+            return;
+        int imageWidth = drawable.getIntrinsicWidth();
+        int imageHeight = drawable.getIntrinsicHeight();
+
+        int width = getWidth();
+        int height = getHeight();
+        float scale=1.0f;
+        matrix.postTranslate((width-imageWidth)/2,(height-imageHeight)/2);
+        matrix.postScale(scale,scale,getWidth()/2, getHeight()/2);
+        setImageMatrix(matrix);
+        once=false;
+    }
+
 }

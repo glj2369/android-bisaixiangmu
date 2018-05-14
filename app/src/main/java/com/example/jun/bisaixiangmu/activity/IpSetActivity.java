@@ -140,15 +140,15 @@ public class IpSetActivity extends BaseActivity implements View.OnClickListener 
                             Thread.sleep(300);
                             JSONObject jsonObject2 = new JSONObject();
                             jsonObject2.put("CarId", 1);
-                            String result2 = HttpUrl.posthttp(address + "GetCarAccountBalance.do", jsonObject2.toString());
-                            stringBuilder.append("我传了GetCarAccountBalance.do+" + jsonObject2.toString() + "\n我收到了" + result2 + "\n");
+                            String result2 = HttpUrl.getStringOkhttp(address + "GetCarAccountBalance.do", jsonObject2.toString());
+                            stringBuilder.append("我okhttp传了GetCarAccountBalance.do+" + jsonObject2.toString() + "\n我收到了" + result2 + "\n");
 
                             Thread.sleep(300);
                             JSONObject jsonObject3 = new JSONObject();
                             jsonObject3.put("CarId", 1);
                             jsonObject3.put("Money", 2);
-                            String result3 = HttpUrl.posthttp(address + "SetCarAccountRecharge.do", jsonObject3.toString());
-                            stringBuilder.append("我传了SetCarAccountRecharge.do+" + jsonObject3.toString() + "\n我收到了" + result3 + "\n");
+                            String result3 = HttpUrl.getStringOkhttp(address + "SetCarAccountRecharge.do", jsonObject3.toString());
+                            stringBuilder.append("我okhttp传了SetCarAccountRecharge.do+" + jsonObject3.toString() + "\n我收到了" + result3 + "\n");
 
                             Thread.sleep(300);
                             JSONObject jsonObject4 = new JSONObject();

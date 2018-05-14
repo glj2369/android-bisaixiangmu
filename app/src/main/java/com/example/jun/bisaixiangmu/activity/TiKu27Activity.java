@@ -121,6 +121,9 @@ public class TiKu27Activity extends BaseActivity {
                 }
                 RequestBody requestBody = RequestBody.create(MediaType.parse("application/json;charset=utf-8"), jsonObject.toString());
                 Request request = new Request.Builder()
+                        .header("accept","*/*")
+                        .header("aonnection","Keep-Alive")
+                        .header("Content-Type","text/html;charset=utf-8")
                         .url("http://www.baidu.com")
                         .post(requestBody)
                         .build();
@@ -154,8 +157,6 @@ public class TiKu27Activity extends BaseActivity {
 
                 String shidu = (String) map.get("shidu");
                 textViewShiDu.setText(shidu + "%");
-
-
 
                 int guangzhao2 = (int) map.get("guangzhao");
                 if (guangzhao2<520){

@@ -14,6 +14,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.jun.bisaixiangmu.R;
 
@@ -25,11 +26,18 @@ public class ImageTouchTestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_touch_test);
-
+        ImageView test_image=findViewById(R.id.test_image);
+        test_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ImageTouchTestActivity.this, "我点击了图片", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
-
-
+    public void test(){
+        Toast.makeText(ImageTouchTestActivity.this, "我点击了图片", Toast.LENGTH_SHORT).show();
+    }
     /**
      * 返回两个点之间的距离
      */

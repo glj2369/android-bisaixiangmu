@@ -13,6 +13,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
+import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -42,38 +43,38 @@ public class HttpUrl {
     }
 
     public static String posthttp(String urlString, String jsonStr) throws IOException {
-            URL mUrl  = new URL(urlString);
-            HttpURLConnection mConnection = (HttpURLConnection) mUrl.openConnection();
-            mConnection.addRequestProperty("accept", "*/*");
-            mConnection.setRequestProperty("connection", "Keep-Alive");
-            mConnection.addRequestProperty("Content-Type", "text/html;charset=utf-8");
-            mConnection.setConnectTimeout(3000);
-            mConnection.setReadTimeout(3000);
-            mConnection.setDoOutput(true);
-            mConnection.setDoInput(true);
-            mConnection.setRequestMethod("POST");
+        URL mUrl = new URL(urlString);
+        HttpURLConnection mConnection = (HttpURLConnection) mUrl.openConnection();
+        mConnection.addRequestProperty("accept", "*/*");
+        mConnection.setRequestProperty("connection", "Keep-Alive");
+        mConnection.addRequestProperty("Content-Type", "text/html;charset=utf-8");
+        mConnection.setConnectTimeout(3000);
+        mConnection.setReadTimeout(3000);
+        mConnection.setDoOutput(true);
+        mConnection.setDoInput(true);
+        mConnection.setRequestMethod("POST");
 
-            OutputStream os = mConnection.getOutputStream();
-            OutputStreamWriter writer = new OutputStreamWriter(os);
-            writer.write(jsonStr);
-            writer.flush();
-            writer.close();
-            os.close();
+        OutputStream os = mConnection.getOutputStream();
+        OutputStreamWriter writer = new OutputStreamWriter(os);
+        writer.write(jsonStr);
+        writer.flush();
+        writer.close();
+        os.close();
 
-            InputStream in = mConnection.getInputStream();
-            BufferedReader mReader = new BufferedReader(new InputStreamReader(in));
-            StringBuilder result = new StringBuilder();
-            String line;
-            while ((line = mReader.readLine()) != null) {
-                result.append(line);
-            }
-            if (in != null) {
-                in.close();
-            }
-            if (mReader != null) {
-                mReader.close();
-            }
-            return result.toString();
+        InputStream in = mConnection.getInputStream();
+        BufferedReader mReader = new BufferedReader(new InputStreamReader(in));
+        StringBuilder result = new StringBuilder();
+        String line;
+        while ((line = mReader.readLine()) != null) {
+            result.append(line);
+        }
+        if (in != null) {
+            in.close();
+        }
+        if (mReader != null) {
+            mReader.close();
+        }
+        return result.toString();
 
     }
 
@@ -81,21 +82,12 @@ public class HttpUrl {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                URL url = null;
                 try {
-                    url = new URL(urlString);
-                    OkHttpClient client = new OkHttpClient();
-
-                    RequestBody requestBody = RequestBody.create(MediaType.parse("application/json;charset=utf-8"), jsonStr);
-                    Request request = new Request.Builder()
-                            .url(url)
-                            .method("POST", requestBody)
-                            .build();
-                    Response response = client.newCall(request).execute();
-                    String result = response.body().toString();
+                    String result = getStringOkhttp(urlString, jsonStr);
                     lisenter.response(result);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -103,5 +95,20 @@ public class HttpUrl {
             }
         }).start();
 
+    }
+
+    public static String getStringOkhttp(String urlString, String jsonStr) throws IOException {
+        URL url = new URL(urlString);
+        OkHttpClient client = new OkHttpClient();
+        RequestBody requestBody = FormBody.create(MediaType.parse("application/json;charset=utf-8"), jsonStr);
+        Request request = new Request.Builder()
+                .url(url)
+                .header("accept", "*/*")
+                .header("connection", "Keep-Alive")
+                .header("Content-Type", "text/html;charset=utf-8")
+                .method("POST", requestBody)
+                .build();
+        Response response = client.newCall(request).execute();
+        return response.body().string();
     }
 }

@@ -22,6 +22,7 @@ import com.example.jun.bisaixiangmu.R;
 import com.example.jun.bisaixiangmu.bean.Bean22;
 import com.example.jun.bisaixiangmu.bean.Bean9;
 import com.example.jun.bisaixiangmu.db.ChongzhiHistory;
+import com.example.jun.bisaixiangmu.http.HttpUrl;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -75,8 +76,10 @@ public class Dialog22 extends Dialog implements View.OnClickListener {
                 stringBuilder.append(id + "  ");
             }
         }
-
-
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("提示");
+        progressDialog.setMessage("数据加载中...");
+        progressDialog.setCancelable(false);
 
         editTextJinE = findViewById(R.id.et_jine);
         buttonChongzhi = findViewById(R.id.dialog_chonghzi);
@@ -106,10 +109,7 @@ public class Dialog22 extends Dialog implements View.OnClickListener {
                         //进行网络请求
                         //进行充值
                         if (flag) {
-                            progressDialog = new ProgressDialog(context);
-                            progressDialog.setTitle("提示");
-                            progressDialog.setMessage("数据加载中...");
-                            progressDialog.setCancelable(false);
+
                             progressDialog.show();
                             final SQLiteDatabase db = chongzhiHistory.getWritableDatabase();
                             //这里开启一个子线程，，休眠三秒
@@ -119,17 +119,8 @@ public class Dialog22 extends Dialog implements View.OnClickListener {
                                     try {
                                         for (Bean22 bean22:bean22List){
                                             if (bean22.isCb()){
-                                                ContentValues valuse=new ContentValues();
-                                                valuse.put("carId",bean22.getId()+"");
-                                                valuse.put("chongNum",string+"");
-                                                valuse.put("personName","admin");
-                                                SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                                                Date date=new Date();
-                                                valuse.put("historyTime",simpleDateFormat.format(date));
-                                                long history = db.insert("history", null, valuse);
-                                                Log.i("DiaLog22","当前数据库添加到"+history+"条");
+                                                saveDatabase(bean22, string, db);
                                             }
-
                                         }
                                         if (db!=null){
                                             db.close();
@@ -154,6 +145,17 @@ public class Dialog22 extends Dialog implements View.OnClickListener {
         }
     }
 
+    private void saveDatabase(Bean22 bean22, String string, SQLiteDatabase db) {
+        ContentValues valuse=new ContentValues();
+        valuse.put("carId",bean22.getId()+"");
+        valuse.put("chongNum",string+"");
+        valuse.put("personName","admin");
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date=new Date();
+        valuse.put("historyTime",simpleDateFormat.format(date));
+        long history = db.insert("history", null, valuse);
+        Log.i("DiaLog22","当前数据库添加到"+history+"条");
+    }
 
 
 }

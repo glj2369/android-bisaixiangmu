@@ -7,7 +7,6 @@
     android:orientation="vertical"
     android:gravity="center"
     android:id="@+id/test"
-    android:background="#8822ffff"
     tools:context=".activity.ImageTouchTestActivity">
     <!--<ImageView-->
         <!--android:id="@+id/image"-->
@@ -15,8 +14,11 @@
         <!--android:src="@mipmap/ic_launcher_round"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent" />-->
-    <com.example.jun.bisaixiangmu.imageTest.ScImageView
+    <com.example.jun.bisaixiangmu.imageTest.MyImageView
         android:src="@mipmap/yundong"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:id="@+id/test_image"
+        android:layout_width="300dp"
+        android:onClick="test"
+        android:layout_height="300dp"
+        tools:ignore="OnClick" />
 </LinearLayout>
