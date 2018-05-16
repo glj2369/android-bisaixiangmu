@@ -145,7 +145,7 @@ public class MainActivity extends BaseMainActivity {
     protected int getLayouId() {
         return R.layout.activity_main;
     }
-
+    //测试
     //这里初始化数据是初始化一个viewpager模拟 最外层Fragment 里面一个viewpager和几个小imageview
     @Override
     protected void initData() {
