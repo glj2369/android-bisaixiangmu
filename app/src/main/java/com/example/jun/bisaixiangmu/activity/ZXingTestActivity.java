@@ -18,8 +18,11 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -90,7 +93,8 @@ public class ZXingTestActivity extends BaseActivity {
         imageView = findViewById(R.id.zxing_imageview);
         imageView_big = findViewById(R.id.quan_ping);
         textView = findViewById(R.id.tv_zxing_show);
-        bitmap = createBitmap(erWeiMaString);
+        //bitmap = createBitmap(erWeiMaString);
+        bitmap = createTest(erWeiMaString);
         imageView.setImageBitmap(bitmap);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,6 +147,7 @@ public class ZXingTestActivity extends BaseActivity {
             hints.put(EncodeHintType.CHARACTER_SET, "utf-8");//解决乱码
             hints.put(EncodeHintType.ERROR_CORRECTION, "H");//容错率，也就是 黑白点 密集
             //两种方式生成二维码
+
             BitMatrix bitMatrix = new QRCodeWriter().encode(str, BarcodeFormat.QR_CODE, 400, 400, hints);
             //以前zxing版本
             // BitMatrix bitMatrix = new MultiFormatWriter().encode(str,BarcodeFormat.QR_CODE, 400, 400,hints);
@@ -166,6 +171,27 @@ public class ZXingTestActivity extends BaseActivity {
         return bitmap1;
     }
 
+
+    //练习二维码生成
+    public Bitmap createTest(String s){
+       Bitmap bitmap=null;
+
+        Map<EncodeHintType, String> hints=new HashMap<>();
+        try {
+            hints.put(EncodeHintType.CHARACTER_SET,"utf-8");
+            hints.put(EncodeHintType.ERROR_CORRECTION,"H");
+            BitMatrix bitMatrix = new QRCodeWriter().encode(s, BarcodeFormat.QR_CODE, 400, 400, hints);
+
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+
+
+        return bitmap;
+    }
+
+
+
     class TestTimer extends TimerTask {
 
         @Override
@@ -175,7 +201,8 @@ public class ZXingTestActivity extends BaseActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    imageView.setImageBitmap(createBitmap(erWeiMaString));
+                    //imageView.setImageBitmap(createBitmap(erWeiMaString));
+                    imageView.setImageBitmap(createTest(erWeiMaString));
                     Toast.makeText(ZXingTestActivity.this, "二维码已更新，周期"+miao+"秒", Toast.LENGTH_SHORT).show();
                 }
             });

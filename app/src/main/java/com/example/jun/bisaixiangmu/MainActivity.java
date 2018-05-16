@@ -1,6 +1,7 @@
 package com.example.jun.bisaixiangmu;
 
 import android.annotation.SuppressLint;
+import android.app.Application;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ComponentName;
@@ -45,6 +46,7 @@ import com.example.jun.bisaixiangmu.activity.HongDengActivity;
 import com.example.jun.bisaixiangmu.activity.HuanJing5Activity;
 import com.example.jun.bisaixiangmu.activity.ImageTouchTestActivity;
 import com.example.jun.bisaixiangmu.activity.IpSetActivity;
+import com.example.jun.bisaixiangmu.activity.TestActivity;
 import com.example.jun.bisaixiangmu.activity.TestChar;
 import com.example.jun.bisaixiangmu.activity.TestExpandableListActivity;
 import com.example.jun.bisaixiangmu.activity.TiKu11Activity;
@@ -72,6 +74,8 @@ import com.example.jun.bisaixiangmu.activity.YuZhi7Activity;
 import com.example.jun.bisaixiangmu.activity.ZhangDan3Activity;
 import com.example.jun.bisaixiangmu.bean.MenuList;
 import com.example.jun.bisaixiangmu.db.YiJian31DB;
+import com.example.jun.bisaixiangmu.dialog.MyReceiver;
+import com.example.jun.bisaixiangmu.http.HttpUrl;
 import com.example.jun.bisaixiangmu.http.NetUtil1;
 import com.example.jun.bisaixiangmu.utils.DialogDome;
 import com.example.jun.bisaixiangmu.utils.ListAdapterMenu;
@@ -106,6 +110,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+
+import static com.example.jun.bisaixiangmu.activity.IpSetActivity.TEST_ADDRESS;
+import static com.example.jun.bisaixiangmu.activity.IpSetActivity.TEST_HTTP;
 
 public class MainActivity extends BaseMainActivity {
     private DrawerLayout mDrawerLayout;
@@ -228,9 +235,12 @@ public class MainActivity extends BaseMainActivity {
         initMenu();
 
         timer = new Timer();
-
-        receiver = new DialogDome(this);
+        MyReceiver receiver = new MyReceiver(this);
         registerReceiver(receiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+
+
+//        receiver = new DialogDome(this);
+//        registerReceiver(receiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 
         intent = new Intent(MainActivity.this, MyApp7Service.class);
         conn = new MyConn();
@@ -258,8 +268,19 @@ public class MainActivity extends BaseMainActivity {
             }
         });
         //menuinit();
+        testHttp();
+    }
 
-
+    private void testHttp() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String ip = getSharedPreferences("ipset", 0).getString("ip", "192.168.1.106");
+                final String address = TEST_HTTP + ip + TEST_ADDRESS;
+                JSONObject jsonObject7 = new JSONObject();
+                String result7 = HttpUrl.posthttp2(address + "GetAllSense.do", jsonObject7.toString());
+            }
+        }).start();
     }
 
     private void initMenu() {
@@ -373,154 +394,14 @@ public class MainActivity extends BaseMainActivity {
             case R.id.tiku_45:
                 startActivity(new Intent(MainActivity.this, TiKu45Activity.class));
                 break;
+            case R.id.test:
+                startActivity(new Intent(MainActivity.this, TestActivity.class));
+                break;
             default:
                 break;
         }
     }
 
-
-    private void menuinit() {
-//        mTvMenu.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                mDrawerLayout.openDrawer(GravityCompat.START);
-//            }
-//        });
-
-
-        list = new ArrayList<>();
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "红绿灯管理2题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "出行管理8题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "阈值设置7题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "MPAndroidChartTest"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "我的账户1题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "账单管理3题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "车辆违章4题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "二维码37题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "环境指标5题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "实时显示6题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "账户管理9题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "生活助手14题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "生活助手17题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "个人中心20题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "红绿灯管理21题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "账户管理22题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "账户设置23题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "生活助手24题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "路况查询25题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "生活助手27题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "意见反馈31题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "高速路况33题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "红绿灯管理11题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "个人中心16题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "旅游信息33题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "天气信息36题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "地铁查询32题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "定制班车38题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "新闻媒体39题"));
-        list.add(new MenuList(R.mipmap.ic_launcher_round, "imageTest"));
-        ListAdapterMenu adapter = new ListAdapterMenu(this, list);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0:
-                        startActivity(new Intent(MainActivity.this, HongDengActivity.class));
-                        break;
-                    case 1:
-                        startActivity(new Intent(MainActivity.this, ChuXingActivity.class));
-                        break;
-                    case 2:
-                        startActivity(new Intent(MainActivity.this, YuZhi7Activity.class));
-                        break;
-                    case 3:
-                        startActivity(new Intent(MainActivity.this, TestChar.class));
-                        break;
-                    case 4:
-                        startActivity(new Intent(MainActivity.this, ChongZhi1Activity.class));
-                        break;
-                    case 5:
-                        startActivity(new Intent(MainActivity.this, ZhangDan3Activity.class));
-                        break;
-                    case 6:
-                        startActivity(new Intent(MainActivity.this, WeiZhang4Activity.class));
-                        break;
-                    case 7:
-                        startActivity(new Intent(MainActivity.this, ErWeiMa37Activity.class));
-                        break;
-                    case 8:
-                        startActivity(new Intent(MainActivity.this, HuanJing5Activity.class));
-                        break;
-                    case 9://实时显示6题
-                        startActivity(new Intent(MainActivity.this, XianShi6Activity.class));
-                        break;
-                    case 10://ETC账单管理9题
-                        startActivity(new Intent(MainActivity.this, ETC9Activity.class));
-                        break;
-                    case 11://生活助手14题
-                        startActivity(new Intent(MainActivity.this, TiKu14Activity.class));
-                        break;
-                    case 12://生活助手17题
-                        startActivity(new Intent(MainActivity.this, TiKu17Activity.class));
-                        break;
-                    case 13://个人中心20题
-                        startActivity(new Intent(MainActivity.this, TiKu20Activity.class));
-                        break;
-                    case 14://21题
-                        startActivity(new Intent(MainActivity.this, TiKu21Activity.class));
-                        break;
-                    case 15://22题
-                        startActivity(new Intent(MainActivity.this, TiKu22Activity.class));
-                        break;
-                    case 16://23题
-                        startActivity(new Intent(MainActivity.this, TiKu23Activity.class));
-                        break;
-                    case 17://24题
-                        startActivity(new Intent(MainActivity.this, TiKu24Activity.class));
-                        break;
-                    case 18://25题
-                        startActivity(new Intent(MainActivity.this, TiKu25Activity.class));
-                        break;
-                    case 19://27题
-                        startActivity(new Intent(MainActivity.this, TiKu27Activity.class));
-                        break;
-                    case 20://31题
-                        startActivity(new Intent(MainActivity.this, TiKu31Activity.class));
-                        break;
-                    case 21://33题
-                        startActivity(new Intent(MainActivity.this, TiKu33Activity.class));
-                        break;
-                    case 22://11题
-                        startActivity(new Intent(MainActivity.this, TiKu11Activity.class));
-                        break;
-                    case 23://16题
-                        startActivity(new Intent(MainActivity.this, TiKu16Activity.class));
-                        break;
-                    case 24://35题
-                        startActivity(new Intent(MainActivity.this, TiKu35Activity.class));
-                        break;
-                    case 25://36题
-                        startActivity(new Intent(MainActivity.this, TiKu36ctivity.class));
-                        break;
-                    case 26://32题
-                        startActivity(new Intent(MainActivity.this, TiKu32Activity.class));
-                        break;
-                    case 27://38题
-                        startActivity(new Intent(MainActivity.this, TiKu38Activity.class));
-                        break;
-                    case 28://新闻媒体39题
-                        startActivity(new Intent(MainActivity.this, TiKu39Activity.class));
-                        break;
-                    case 29://imageTest
-                        startActivity(new Intent(MainActivity.this, ImageTouchTestActivity.class));
-                        break;
-                    default:
-                        break;
-                }
-            }
-        });
-    }
 
     @Override
     protected void onDestroy() {
@@ -608,47 +489,23 @@ public class MainActivity extends BaseMainActivity {
 
     }
 
-    private void postJson() {
-        //String weatherUrl = "https://free-api.heweather.com/s6/weather?";//location=" + weatherId + "&key=02a55672f62d4149bd2546f2ae665385";
-        //String weatherUrl = "https://free-api.heweather.com/s6/weather?{"location":"beijing","key":"02a55672f62d4149bd2546f2ae665385"}";//location=" + weatherId + "&key=02a55672f62d4149bd2546f2ae665385";
-        //申明给服务端传递一个json串
-        //创建一个OkHttpClient对象
-
-        OkHttpClient okHttpClient = new OkHttpClient();
-        //创建一个RequestBody(参数1：数据类型 参数2传递的json串)"application/json; charset=utf-8"
-        JSONObject jsonObject = new JSONObject();
+    private String postJson(String url, String json) {
         try {
-            jsonObject.put("carId", "1");
-            jsonObject.put("name", "admin");
-            jsonObject.put("UserName", "user1");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        Log.e("jsonObject", "" + jsonObject.toString());
-        RequestBody requestBody2 = new FormBody.Builder().add("carId", "1").build();
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json;charset=utf-8"),
-                jsonObject.toString());
-        Log.e("requestBody", "" + requestBody.toString());
-        //创建一个请求对象
-        Request request = new Request.Builder()
-                //.url(weatherUrl) //
-                .url("http://192.168.43.29:8090/TestJson/Test")
-                .post(requestBody2)
-                .build();
-        //发送请求获取响应
-        try {
-            Response response = okHttpClient.newCall(request).execute();
-            String string = response.body().toString();
-            Log.e("MainActivity", "---" + string);
-            //判断请求是否成功
-//            if(response.isSuccessful()){
-//                //打印服务端返回结果
-//                Log.e("MainActivity",""+response.toString());
-//            }
+            OkHttpClient client = new OkHttpClient();
+            RequestBody requestBody = FormBody.create(MediaType.parse("application/json;charset=utf-8"), json);
+            Request request = new Request.Builder()
+                    .url(url)
+                    .header("accept", "*/*")
+                    .header("connection", "Keep-Alive")
+                    .header("Content-Type", "text/html;charset=utf-8")
+                    .build();
+            Response response = client.newCall(request).execute();
+            String string = response.body().string();
+            return string;
         } catch (IOException e) {
             e.printStackTrace();
+            return e.toString();
         }
-
     }
 
     @Override
@@ -677,8 +534,6 @@ public class MainActivity extends BaseMainActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        Log.e("onKeyDownonKeyDown", "" + keyCode);
-        Log.e("onKeyDownonKeyDown", "" + event);
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
             exit();
             return false;
@@ -687,9 +542,9 @@ public class MainActivity extends BaseMainActivity {
     }
 
     private void exit() {
-        if (System.currentTimeMillis() - time > 2000) {
-            Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
+        if (System.currentTimeMillis() - time >= 2000) {
             time = System.currentTimeMillis();
+            Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
         } else {
             finish();
             System.exit(0);

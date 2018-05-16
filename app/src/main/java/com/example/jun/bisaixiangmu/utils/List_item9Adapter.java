@@ -94,6 +94,7 @@ public class List_item9Adapter extends BaseAdapter {
                 Dialog9 dialog9=new Dialog9(context,"",bean9List,"车牌号：");
                 dialog9.setCancelable(false);
                 dialog9.show();
+                dialog9.getE();
             }
         });
         return convertView;

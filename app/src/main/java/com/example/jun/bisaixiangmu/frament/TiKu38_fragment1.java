@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,16 +39,16 @@ public class TiKu38_fragment1 extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        datas.add("媒体用吸鸦片比喻宣传高考状元   山东户口遭吐槽：高考累死");
-        datas.add("全球大学毕业生就业力排名   12所招收非京籍的公办国际班分数线");
-        datas.add("教育部：豫湘冀大班额占全国总数52%   北京六区小升初特长生计划");
-        datas.add("牢记这8句话 2018中考必将一鸣惊人(图)");
-        datas.add("2018年高考不到1个月 各科复习这样做");
+        tiku_39_list= getView().findViewById(R.id.tiku_39_list);
+        datas=new ArrayList<>();
+//        datas.add("媒体用吸鸦片比喻宣传高考状元   山东户口遭吐槽：高考累死");
+//        datas.add("全球大学毕业生就业力排名   12所招收非京籍的公办国际班分数线");
+//        datas.add("教育部：豫湘冀大班额占全国总数52%   北京六区小升初特长生计划");
+//        datas.add("牢记这8句话 2018中考必将一鸣惊人(图)");
+//        datas.add("2018年高考不到1个月 各科复习这样做");
         adapter=new ArrayAdapter<String>(context,R.layout.tiku32_item,datas);
         tiku_39_list.setAdapter(adapter);
-
-
-
+        Log.e("TiKu38_fragment1","onActivityCreated");
         String ip = context.getSharedPreferences("ipset",0)
                 .getString("ip", "192.168.1.106");
         address = TEST_HTTP + ip + TEST_ADDRESS;
@@ -82,9 +83,7 @@ public class TiKu38_fragment1 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.tiku38_fragment1,null);
-        tiku_39_list= view.findViewById(R.id.tiku_39_list);
-        datas=new ArrayList<>();
-        return view;
+
+        return inflater.inflate(R.layout.tiku38_fragment1,null);
     }
 }

@@ -55,24 +55,24 @@ public class TiKu14Activity extends BaseActivity implements View.OnClickListener
     @Override
     protected void initData() {
         gengXin();
-        List<Fragment> viewList=new ArrayList<>();
+        List<Fragment> viewList = new ArrayList<>();
         viewList.add(new TiKu14Pager1Fragment());
         viewList.add(new TiKu14Pager2Fragment());
         viewList.add(new TiKu14Pager3Fragment());
         viewList.add(new TiKu14Pager4Fragment());
-        adapter=new MyFragmentPagerAdapter(getSupportFragmentManager(),viewList);
+        adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), viewList);
         viewPager.setAdapter(adapter);
 
-        final List<TextView> textViewList=new ArrayList<>();
+        final List<TextView> textViewList = new ArrayList<>();
         TextView dotFirst = (TextView) findViewById(R.id.image_1);
         TextView dotFSecond = (TextView) findViewById(R.id.image_2);
         TextView dotThrid = (TextView) findViewById(R.id.image_3);
-        TextView dotFours= (TextView) findViewById(R.id.image_4);
+        TextView dotFours = (TextView) findViewById(R.id.image_4);
         textViewList.add(dotFirst);
         textViewList.add(dotFSecond);
         textViewList.add(dotThrid);
         textViewList.add(dotFours);
-        oldPosition=0;
+        oldPosition = 0;
         textViewList.get(oldPosition).setBackgroundResource(R.drawable.bt_border);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -196,8 +196,8 @@ public class TiKu14Activity extends BaseActivity implements View.OnClickListener
         mTvToDay = findViewById(R.id.tiku_14_today);
         mIvGengXin = findViewById(R.id.tiku_14_gengxin);
         lineChart = findViewById(R.id.tiku_14_line_chart);
-        viewPager=findViewById(R.id.tiku_14_viewpager);
-        mInflater=getLayoutInflater();
+        viewPager = findViewById(R.id.tiku_14_viewpager);
+        mInflater = getLayoutInflater();
         mIvGengXin.setOnClickListener(this);
     }
 
@@ -206,11 +206,11 @@ public class TiKu14Activity extends BaseActivity implements View.OnClickListener
         switch (v.getId()) {
             case R.id.tiku_14_gengxin:
                 Toast.makeText(this, "点击更新", Toast.LENGTH_SHORT).show();
-                int max=listMax.get(1);
-                int min=listMin.get(1);
-                int avg=(max+min)/2;
-                mTvWendu.setText(avg+"°");
-                mTvToDay.setText("今天："+min+"-"+max+"℃");
+                int max = listMax.get(1);
+                int min = listMin.get(1);
+                int avg = (max + min) / 2;
+                mTvWendu.setText(avg + "°");
+                mTvToDay.setText("今天：" + min + "-" + max + "℃");
                 //lineChart.setData(data);
                 break;
             default:

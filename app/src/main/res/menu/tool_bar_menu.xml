@@ -171,4 +171,9 @@
         android:icon="@drawable/ic_title_black_24dp"
         android:title="第四十五题"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/test"
+        android:icon="@drawable/ic_title_black_24dp"
+        android:title="测试"
+        app:showAsAction="never" />
 </menu>

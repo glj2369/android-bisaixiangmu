@@ -2,6 +2,7 @@ package com.example.jun.bisaixiangmu.activity;
 
 
 import android.graphics.Color;
+import android.view.View;
 
 import com.example.jun.bisaixiangmu.R;
 import com.github.mikephil.charting.animation.Easing;
@@ -62,7 +63,14 @@ public class TestChar extends BaseActivity {
 
     @Override
     protected void initView() {
-        lineView();
+        mList.add(0, "一月");
+        mList.add(1, "二月");
+        mList.add(2, "三月");
+        mList.add(3, "四月");
+        mList.add(4, "五月");
+        mList.add(5, "六月");
+        //lineView();
+        linetest();
         barView();
         preChart();
         horizontal_bar();
@@ -98,12 +106,7 @@ public class TestChar extends BaseActivity {
         //LimitLine line = new LimitLine(10f);
         //    data.addLimitLine(line);//添加图表的限制线
         //dataset.setColors(ColorTemplate.COLORFUL_COLORS);//让数据集显示不同的颜色
-        mList.add(0, "一月");
-        mList.add(1, "二月");
-        mList.add(2, "三月");
-        mList.add(3, "四月");
-        mList.add(4, "五月");
-        mList.add(5, "六月");
+
 
         List<Entry> entries = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
@@ -115,7 +118,7 @@ public class TestChar extends BaseActivity {
         LineDataSet dataSet = new LineDataSet(entries, "温度");
         LineData data = new LineData(mList, dataSet);//对应横坐标标签和数据集
         XAxis xAxis = mLineChart.getXAxis();
-
+        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);//这个是设置轴是否从零开始，或者数据开始的时候，轴坐标开始
         //设置X轴值为字符串
         mLineChart.setNoDataText("暂无数据显示");
@@ -256,4 +259,35 @@ public class TestChar extends BaseActivity {
         mPieChart.highlightValues(null);
         mPieChart.invalidate();
     }
+
+    private void linetest(){
+        LineChart lineChart = findViewById(R.id.line_cart);
+
+
+        List<String> strings=new ArrayList<>();
+        for (int i=0;i<6;i++){
+            strings.add((i+1)+"月");
+        }
+        List<Entry> entries=new ArrayList<>();
+        Random random=new Random();
+        for (int i=0;i<strings.size();i++){
+            entries.add(new Entry(random.nextInt(10)+3,i));
+        }
+        LineDataSet lineDataSet=new LineDataSet(entries,"测试");
+        lineDataSet.setColor(Color.GRAY);
+        //lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        LineData lineData=new LineData(strings);
+        lineData.addDataSet(lineDataSet);
+        lineChart.setDescription("");
+        lineChart.setData(lineData);
+        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        lineChart.getXAxis().setDrawGridLines(false);
+        lineChart.getAxisRight().setEnabled(false);
+        lineChart.getAxisLeft().setStartAtZero(false);
+        lineChart.setDrawBorders(false);
+        lineChart.setDrawGridBackground(true);
+        lineChart.setGridBackgroundColor(0xFF00FF00);
+    }
+
+
 }

@@ -31,7 +31,7 @@ public class SplashActivity extends AppCompatActivity {
         ViewPager viewpager = (ViewPager) findViewById(R.id.viewpager);
         MyAdapter adapter = new MyAdapter();
         viewpager.setAdapter(adapter);
-        viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
             public void onPageSelected(int position) {

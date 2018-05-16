@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="@android:color/darker_gray">
-<TextView
-    android:text="222222"
-    android:gravity="center"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
-</android.support.constraint.ConstraintLayout>
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <AnalogClock
+        android:layout_gravity="center"
+        android:dial="@mipmap/ic_launcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <TextClock
+        android:layout_gravity="center"
+        android:format24Hour="yyyy-MM-dd HH:mm:ss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="NewApi" />
+
+</LinearLayout>

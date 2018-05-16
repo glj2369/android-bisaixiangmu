@@ -1,7 +1,6 @@
 package com.example.jun.bisaixiangmu.frament;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -21,6 +20,7 @@ import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -92,7 +92,6 @@ public class WenDuFragment extends Fragment {
         lineChart.setDrawGridBackground(false); //表格颜色
         lineChart.setDescription("");
 
-        lineChart.setDrawBorders(false);
         lineChart.getAxisLeft().setStartAtZero(false);
         //lineChart.getAxisLeft().setDrawGridLines(false); //取消横向的水平线
 

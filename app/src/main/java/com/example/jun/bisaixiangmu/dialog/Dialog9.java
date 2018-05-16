@@ -28,6 +28,12 @@ public class Dialog9 extends Dialog implements View.OnClickListener {
     private EditText editTextJinE;
     private TextView chePai;
     private TextView dialog_content;
+    private int e;
+
+    public int getE() {
+        return e;
+    }
+
     private String stringChepai;
     private String string_content;
     private List<Bean9> bean9List;
@@ -54,7 +60,6 @@ public class Dialog9 extends Dialog implements View.OnClickListener {
         this.context = context;
         this.bean9List = bean9List;
         this.string_content = string_content;
-
     }
 
 
@@ -95,6 +100,7 @@ public class Dialog9 extends Dialog implements View.OnClickListener {
                     Toast.makeText(context, "不能为空", Toast.LENGTH_SHORT).show();
                 } else {
                     int i = Integer.parseInt(string);
+                    e=i;
                     if (i >= 1 && i <= 999) {
                         //进行网络请求
                         //进行充值

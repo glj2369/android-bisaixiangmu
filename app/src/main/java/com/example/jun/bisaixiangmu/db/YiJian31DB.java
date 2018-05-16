@@ -11,6 +11,7 @@ public class YiJian31DB extends SQLiteOpenHelper {
             "phone text," +
             "content text," +
             "time text)";
+
     private final static String CREATE_TABLE_2 = "create table testTime(" +
             "id integer primary key autoincrement," +
             "time datetime)";

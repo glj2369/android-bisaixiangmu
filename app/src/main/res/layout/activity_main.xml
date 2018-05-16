@@ -30,8 +30,9 @@
         <CalendarView
             android:id="@+id/calendar_view"
             android:layout_width="match_parent"
-            android:layout_height="300dp"></CalendarView>
+            android:layout_height="300dp">
 
+        </CalendarView>
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -87,7 +88,6 @@
             android:layout_gravity="start"
             app:headerLayout="@layout/nav_header"
             app:menu="@menu/tool_bar_menu">
-
         </android.support.design.widget.NavigationView>
         <LinearLayout
             android:id="@+id/layout_shezhi"

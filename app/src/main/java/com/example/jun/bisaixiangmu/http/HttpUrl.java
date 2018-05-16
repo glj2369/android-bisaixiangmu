@@ -1,6 +1,8 @@
 package com.example.jun.bisaixiangmu.http;
 
+import android.app.Application;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -41,6 +43,43 @@ public class HttpUrl {
             }
         }).start();
     }
+
+    public static String posthttp2(String urlString, String jsonStr) {
+        try {
+            URL url = new URL(urlString);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestProperty("accept","*/*");
+            connection.setRequestProperty("connection","Keep-Alive");
+            connection.setRequestProperty("Content-Type","text/html;charset=utf-8");
+            connection.setRequestMethod("POST");
+            connection.setReadTimeout(3000);
+            connection.setConnectTimeout(3000);
+            connection.setDoInput(true);
+            connection.setDoOutput(true);
+
+            OutputStream os = connection.getOutputStream();
+            OutputStreamWriter writer = new OutputStreamWriter(os);
+            writer.write(jsonStr);
+            writer.flush();
+            writer.close();
+            os.close();
+
+            InputStream is = connection.getInputStream();
+            BufferedReader reader=new BufferedReader(new InputStreamReader(is));
+            StringBuilder stringBuilder=new StringBuilder();
+            String line;
+            while ((line=reader.readLine())!=null){
+                stringBuilder.append(line);
+            }
+            Log.e("posthttp2","测试自己写的http访问好不好使"+stringBuilder.toString());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
 
     public static String posthttp(String urlString, String jsonStr) throws IOException {
         URL mUrl = new URL(urlString);
@@ -111,4 +150,25 @@ public class HttpUrl {
         Response response = client.newCall(request).execute();
         return response.body().string();
     }
+
+    public static void demoHttp(String url, String json) {
+        try {
+            OkHttpClient client = new OkHttpClient();
+            RequestBody requestBody = FormBody.create(MediaType.parse("application/json;charset=utf-8"), json);
+            Request request = new Request.Builder()
+                    .url(url)
+                    .addHeader("accept", "*/*")
+                    .addHeader("connection", "Keep-Alive")
+                    .addHeader("Content-Type", "text/html;charset=utf-8")
+                    .method("POST", requestBody)
+                    .build();
+            Response response = client.newCall(request).execute();
+            String string = response.body().string();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 }
